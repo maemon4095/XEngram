@@ -1,0 +1,31 @@
+name: publish
+
+on:
+  pull_request:
+    branches:
+      - "main"
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    env:
+      framework: 'net6.0'
+      config: 'Release'
+      output: './publish'
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - run: dotnet publish -c $config -f $framework -o $output
+    - run: cat ${{env.output}}/wwwroot/index.html
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{env.output}}/wwwroot
+        publish_branch: pages
+        enable_jekyll: false
