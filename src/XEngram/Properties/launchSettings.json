@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:33180/AlterNote",
+      "applicationUrl": "http://localhost:33180/XEngram",
       "sslPort": 44349
     }
   },
   "profiles": {
     "AlterNote": {
       "commandName": "Project",
-      "commandLineArgs": "--pathbase /AlterNote",
+      "commandLineArgs": "--pathbase /XEngram",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:7149/AlterNote",
+      "launchUrl": "https://localhost:7149/XEngram",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
