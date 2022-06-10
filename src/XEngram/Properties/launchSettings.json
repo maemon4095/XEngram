@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "AlterNote": {
+    "XEngram": {
       "commandName": "Project",
       "commandLineArgs": "--pathbase /XEngram",
       "launchBrowser": true,
