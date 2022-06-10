@@ -1,6 +1,6 @@
 {
-  "name": "AlterNote",
-  "short_name": "AlterNote",
+  "name": "XEngram",
+  "short_name": "XEngram",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
