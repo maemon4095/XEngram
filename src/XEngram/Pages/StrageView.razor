@@ -1,0 +1,16 @@
+﻿<li>
+    @Entry.Name
+    <ul>
+        @foreach (var entry in this.Entry.Children)
+        {
+            <CascadingValue Value=@entry>
+                <StrageView></StrageView>
+            </CascadingValue>
+        }
+    </ul>
+</li>
+
+@code {
+    [CascadingParameter]
+    IStrageEntry Entry { get; set; }
+}
