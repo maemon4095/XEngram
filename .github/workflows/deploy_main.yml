@@ -23,6 +23,7 @@ jobs:
     - run: dotnet publish -c $config -f $framework -o $output
     
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: peaceiris/actions-gh-pages@v3
