@@ -32,5 +32,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: pages
-          destination_dir: $DESTINATION_DIR
+          destination_dir: ${{ env.DESTINATION_DIR }}
           enable_jekyll: false
