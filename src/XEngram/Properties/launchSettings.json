@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:33180/XEngram",
+      "applicationUrl": "http://localhost:33180/XEngram/release",
       "sslPort": 44349
     }
   },
   "profiles": {
     "XEngram": {
       "commandName": "Project",
-      "commandLineArgs": "--pathbase /XEngram",
+      "commandLineArgs": "--pathbase /XEngram/release",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:7149/XEngram",
+      "launchUrl": "https://localhost:7149/XEngram/release",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
