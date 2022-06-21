@@ -1,4 +1,4 @@
-name: publish
+name: deploy
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
       - "main"
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     name: Build
     env:
@@ -26,5 +26,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ${{env.output}}/wwwroot
+        destination_dir: release
         publish_branch: pages
         enable_jekyll: false
