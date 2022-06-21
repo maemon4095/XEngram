@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "XEngram"
+version = "0.0.0-nightly.0"
+dependencies = [
+ "enclose",
+ "indexmap",
+ "seed",
+ "serde",
+ "uuid",
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -466,18 +478,6 @@ dependencies = [
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
-]
-
-[[package]]
-name = "seed-example"
-version = "0.1.0"
-dependencies = [
- "enclose",
- "indexmap",
- "seed",
- "serde",
- "uuid",
- "wasm-bindgen",
 ]
 
 [[package]]
