@@ -7,25 +7,28 @@ on:
   push:
     branches:
       - "main"
+env:
+  framework: 'net6.0'
+  config: 'Release'
+  output: './publish'
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    name: Build
-    env:
-      framework: 'net6.0'
-      config: 'Release'
-      output: './publish'
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
     - run: dotnet publish -c $config -f $framework -o $output
-    - uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ${{env.output}}/wwwroot
-        destination_dir: release
-        publish_branch: pages
-        enable_jekyll: false
+    
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{env.output}}/wwwroot
+          destination_dir: release
+          publish_branch: pages
+          enable_jekyll: false
