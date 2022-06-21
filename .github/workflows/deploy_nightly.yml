@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
+    env:
       REPOSITORY_NAME: ${{ github.event.repository.name }}
     steps:
       - name: Checkout sources
