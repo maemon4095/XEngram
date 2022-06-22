@@ -1,9 +1,16 @@
 name: deploy nightly
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  workflow_run:
+      workflows: [deploy nightly]
+      types: [requested]
+      branches-ignore:
+        - 'nightly'
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/nightly'
     runs-on: ubuntu-latest
     env:
       REPOSITORY_NAME: ${{ github.event.repository.name }}
