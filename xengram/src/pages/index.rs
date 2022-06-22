@@ -21,7 +21,7 @@ pub(crate) fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
 pub(crate) fn view(model: &Model) -> Node<Msg> {
     div![
         C!["counter"],
-        "This is a counter: ",
+        "This is a num: ",
         button![model.counter, ev(Ev::Click, |_| Msg::Increment),],
     ]
 }
