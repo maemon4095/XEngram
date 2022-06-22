@@ -11,7 +11,7 @@ jobs:
       - name: run in nightly
         run: gh workflow run 'deploy nightly' --ref nightly
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.REPO_TOKEN }}
           GH_REPO: ${{ github.repository }}
   
   deploy:
