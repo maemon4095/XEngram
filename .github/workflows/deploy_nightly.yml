@@ -27,10 +27,10 @@ jobs:
       
       - name: install trunk
         run: cargo install trunk
+        continue-on-error: true
 
       - run: trunk build --release --public-url "$REPOSITORY_NAME/$DESTINATION_DIR/"
         working-directory: xengram
-        continue-on-error: true
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
