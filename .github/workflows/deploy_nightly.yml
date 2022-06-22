@@ -1,6 +1,9 @@
 name: deploy nightly
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - 'nightly'
 
 jobs:
   deploy:
