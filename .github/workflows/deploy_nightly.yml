@@ -32,6 +32,7 @@ jobs:
         run: cargo install trunk
 
       - run: trunk build --release --public-url "$REPOSITORY_NAME/$DESTINATION_DIR/"
+        working-directory: ./xengram
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
