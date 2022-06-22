@@ -29,7 +29,7 @@ jobs:
         run: cargo install trunk
 
       - run: trunk build --release --public-url "$REPOSITORY_NAME/$DESTINATION_DIR/"
-        working-directory: ./xengram
+        working-directory: xengram
         continue-on-error: true
       
       - name: Deploy
