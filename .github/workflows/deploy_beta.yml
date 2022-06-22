@@ -1,13 +1,18 @@
-name: deploy nightly
+name: deploy beta
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - "beta"
+    paths-ignore:
+      - '.github/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
       REPOSITORY_NAME: ${{ github.event.repository.name }}
-      DESTINATION_DIR: nightly
+      DESTINATION_DIR: beta
     steps:
       - name: checkout sources
         uses: actions/checkout@v2
@@ -29,7 +34,6 @@ jobs:
         run: cargo install trunk
 
       - run: trunk build --release --public-url "$REPOSITORY_NAME/$DESTINATION_DIR/"
-        working-directory: ./xengram
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
