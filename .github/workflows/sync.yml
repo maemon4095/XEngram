@@ -3,7 +3,7 @@ name: sync workflow
 on:
   push:
     branches:
-      - default
+      - common
   workflow_dispatch:
 
 jobs:
