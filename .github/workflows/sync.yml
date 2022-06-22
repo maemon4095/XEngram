@@ -18,3 +18,4 @@ jobs:
         with:
           GH_PAT: ${{ secrets.REPO_TOKEN }}
           CONFIG_PATH: .github/sync_settings/sync_files.yml
+          SKIP_PR: true
