@@ -1,12 +1,11 @@
 name: deploy beta
 
 on:
-  pull_request:
-    branches:
-      - "beta"
   push:
     branches:
       - "beta"
+    paths-ignore:
+      - '.github/**'
 
 jobs:
   deploy:
