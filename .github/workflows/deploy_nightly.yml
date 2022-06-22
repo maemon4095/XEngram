@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: run in nightly
         run: gh workflow run 'deploy nightly' --ref nightly
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   deploy:
     if: github.ref == 'refs/heads/nightly'
