@@ -17,7 +17,9 @@ jobs:
       REPOSITORY_NAME: ${{ github.event.repository.name }}
     steps:
       - name: checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH }}
       
       - name: add target
         run: rustup target add wasm32-unknown-unknown
