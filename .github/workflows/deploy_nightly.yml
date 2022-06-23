@@ -3,17 +3,7 @@ name: deploy nightly
 on: 
   workflow_dispatch:
 
-jobs:
-  ensure-branch:
-    if: github.ref != 'refs/heads/nightly'
-    runs-on: ubuntu-latest
-    steps:
-      - name: run in nightly
-        run: gh workflow run 'deploy nightly' --ref nightly
-        env:
-          GH_TOKEN: ${{ secrets.REPO_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-  
+jobs:  
   deploy:
     if: github.ref == 'refs/heads/nightly'
     runs-on: ubuntu-latest
@@ -22,7 +12,9 @@ jobs:
       DESTINATION_DIR: nightly
     steps:
       - name: checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: nightly
       
       - name: add target
         run: rustup target add wasm32-unknown-unknown
