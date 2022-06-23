@@ -258,7 +258,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('xengram-ac11bfc7fec85d92_bg.wasm', import.meta.url);
+        input = new URL('xengram-ee20d32cfe52c3d1_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
