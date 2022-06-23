@@ -203,11 +203,11 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_24(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__ha0af2e07f1f7e151(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5f4734e1defee5f3(arg0, arg1, addHeapObject(arg2));
 }
 
 function __wbg_adapter_27(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hdf54be17fdd272df(arg0, arg1, arg2);
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h37cd883f39952329(arg0, arg1, arg2);
 }
 
 function handleError(f, args) {
@@ -258,7 +258,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('xengram-ee20d32cfe52c3d1_bg.wasm', import.meta.url);
+        input = new URL('xengram-ff37ebd71007d270_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
@@ -798,12 +798,12 @@ async function init(input) {
         var ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper377 = function(arg0, arg1, arg2) {
-        var ret = makeMutClosure(arg0, arg1, 84, __wbg_adapter_24);
+    imports.wbg.__wbindgen_closure_wrapper382 = function(arg0, arg1, arg2) {
+        var ret = makeMutClosure(arg0, arg1, 86, __wbg_adapter_24);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper378 = function(arg0, arg1, arg2) {
-        var ret = makeMutClosure(arg0, arg1, 84, __wbg_adapter_27);
+    imports.wbg.__wbindgen_closure_wrapper383 = function(arg0, arg1, arg2) {
+        var ret = makeMutClosure(arg0, arg1, 86, __wbg_adapter_27);
         return addHeapObject(ret);
     };
 
