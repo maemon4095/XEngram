@@ -1,6 +1,7 @@
+use crate::Message;
 use seed::{prelude::*, *};
 
-pub(crate) fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
+pub(crate) fn init(_: Url, _: &mut impl Orders<Message>) -> Model {
     Model { counter: 0 }
 }
 
@@ -12,16 +13,19 @@ pub(crate) enum Msg {
     Increment,
 }
 
-pub(crate) fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
+pub(crate) fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Message>) {
     match msg {
         Msg::Increment => model.counter += 1,
     }
 }
 
-pub(crate) fn view(model: &Model) -> Node<Msg> {
+pub(crate) fn view(model: &Model) -> Node<Message> {
     div![
         C!["counter"],
         "This is a num: ",
-        button![model.counter, ev(Ev::Click, |_| Msg::Increment),],
+        button![
+            model.counter,
+            ev(Ev::Click, |_| Message::Index(Msg::Increment)),
+        ],
     ]
 }

@@ -1,32 +1,63 @@
+mod lib;
 mod pages;
 use seed::{prelude::*, *};
 
 fn main() {
-    App::start("app", Model::init, Model::update, Model::view);
+    App::start("app", init, update, view);
 }
 
 struct Model {
-    counter: i32,
+    page: Page,
 }
-
+#[non_exhaustive]
 enum Message {
-    Increment,
+    Common(lib::common::Message),
+    Index(pages::index::Msg),
 }
 
-impl Model {
-    pub fn init(_: Url, _: &mut impl Orders<Message>) -> Self {
-        Model { counter: 0 }
+#[non_exhaustive]
+enum Page {
+    Index(pages::index::Model),
+    NotFound(),
+}
+
+impl Page {
+    fn init(url: Url, orders: &mut impl Orders<Message>) -> Page {
+        Page::Index(pages::index::init(url, orders))
     }
-    pub fn update(msg: Message, model: &mut Model, _: &mut impl Orders<Message>) {
-        match msg {
-            Message::Increment => model.counter += 1,
+
+    fn not_found() -> Page {
+        Page::NotFound()
+    }
+}
+
+fn init(url: Url, orders: &mut impl Orders<Message>) -> Model {
+    use pages::*;
+    let page = Page::Index(index::init(url, orders));
+
+    Model { page }
+}
+fn update(msg: Message, model: &mut Model, orders: &mut impl Orders<Message>) {
+    use pages::*;
+    use Message::*;
+
+    match (msg, &mut model.page) {
+        (Common(message), ref mut p) => {
+            use lib::common::Message::*;
+            match message {
+                PageTransition(url, _) => model.page = Page::init(url, orders),
+            }
         }
+        (Index(msg), Page::Index(ref mut m)) => {
+            index::update(msg, m, orders);
+        }
+        _ => model.page = Page::not_found(),
     }
-    pub fn view(model: &Model) -> Node<Message> {
-        div![
-            C!["counter"],
-            "This is a num: ",
-            button![model.counter, ev(Ev::Click, |_| Message::Increment),],
-        ]
+}
+fn view(model: &Model) -> Node<Message> {
+    use pages::*;
+    match model.page {
+        Page::Index(ref m) => index::view(m),
+        _ => not_found::view(),
     }
 }
