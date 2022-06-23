@@ -25,7 +25,7 @@ impl Model {
     pub fn view(model: &Model) -> Node<Message> {
         div![
             C!["counter"],
-            "This is a counter: ",
+            "This is a num: ",
             button![model.counter, ev(Ev::Click, |_| Message::Increment),],
         ]
     }
