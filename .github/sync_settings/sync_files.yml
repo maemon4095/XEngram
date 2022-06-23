@@ -1,7 +1,0 @@
-group:
-  repos: |
-    maemon4095/XEngram@release
-    maemon4095/XEngram@beta
-    maemon4095/XEngram@nightly
-  files:
-    - .github/workflows/
