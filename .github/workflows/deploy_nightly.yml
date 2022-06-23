@@ -3,18 +3,17 @@ name: deploy nightly
 on: 
   workflow_dispatch:
 
-jobs:  
+jobs:
   deploy:
-    if: github.ref == 'refs/heads/nightly'
     runs-on: ubuntu-latest
     env:
       REPOSITORY_NAME: ${{ github.event.repository.name }}
-      DESTINATION_DIR: nightly
+      BRANCH: nightly
     steps:
       - name: checkout sources
         uses: actions/checkout@v3
         with:
-          ref: nightly
+          ref: ${{ env.BRANCH }}
       
       - name: add target
         run: rustup target add wasm32-unknown-unknown
@@ -40,7 +39,7 @@ jobs:
       - name: update cargo tools
         run: cargo install-update --all
 
-      - run: trunk build --release --public-url "$REPOSITORY_NAME/$DESTINATION_DIR/"
+      - run: trunk build --release --public-url "$REPOSITORY_NAME/$BRANCH/"
         working-directory: xengram
       
       - name: Deploy
@@ -49,5 +48,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: xengram/dist
           publish_branch: pages
-          destination_dir: ${{ env.DESTINATION_DIR }}
+          destination_dir: ${{ env.BRANCH }}
           enable_jekyll: false
