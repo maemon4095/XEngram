@@ -1,7 +1,7 @@
-pub(crate) mod common {
+mod common {
     use seed::{prelude::*, *};
 
-    pub(crate) enum Message {
+    pub enum Message {
         PageTransition(Url, Option<Url>),
     }
 }
