@@ -1,4 +1,4 @@
-mod common {
+pub(crate) mod common {
     use seed::{prelude::*, *};
 
     pub enum Message {
