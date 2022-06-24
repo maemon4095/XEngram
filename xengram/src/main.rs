@@ -10,7 +10,7 @@ struct Model {
     page: Page,
 }
 #[non_exhaustive]
-enum Message {
+pub enum Message {
     Common(lib::common::Message),
     Index(pages::index::Msg),
 }
