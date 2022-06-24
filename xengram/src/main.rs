@@ -33,8 +33,8 @@ impl Page {
 
 fn init(url: Url, orders: &mut impl Orders<Message>) -> Model {
     use pages::*;
-    let page = Page::Index(index::init(&url, orders));
-    seed::log(format!("url : {:?}", &url));
+    seed::log(format!("url : {:?}", url));
+    let page = Page::Index(index::init(url, orders));
     Model { page }
 }
 fn update(msg: Message, model: &mut Model, orders: &mut impl Orders<Message>) {
