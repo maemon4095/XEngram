@@ -1,7 +1,8 @@
+use crate::route::*;
 use crate::Message;
 use seed::{prelude::*, *};
 
-pub const url : &str = "index";
+pub const ROUTE: Route = Route::new("index");
 
 pub fn init(_: Url, _: &mut impl Orders<Message>) -> Model {
     Model { counter: 0 }

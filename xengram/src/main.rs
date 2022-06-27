@@ -1,5 +1,6 @@
-mod lib;
+mod common;
 mod pages;
+mod route;
 use seed::{prelude::*, *};
 
 fn main() {
@@ -9,13 +10,11 @@ fn main() {
 struct Model {
     page: Page,
 }
-#[non_exhaustive]
 pub enum Message {
-    Common(lib::common::Message),
+    Common(common::Message),
     Index(pages::index::Msg),
 }
 
-#[non_exhaustive]
 enum Page {
     Index(pages::index::Model),
     NotFound(),
@@ -42,8 +41,8 @@ fn update(msg: Message, model: &mut Model, orders: &mut impl Orders<Message>) {
     use Message::*;
 
     match (msg, &mut model.page) {
-        (Common(message), ref mut p) => {
-            use lib::common::Message::*;
+        (Common(message), _) => {
+            use common::Message::*;
             match message {
                 PageTransition(url, _) => model.page = Page::init(url, orders),
             }
